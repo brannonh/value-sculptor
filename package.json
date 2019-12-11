@@ -1,0 +1,34 @@
+{
+  "name": "value-sculptor",
+  "version": "0.0.1",
+  "description": "Typescript library for generating pseudo-random dummy values",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brannonh/value-sculptor.git"
+  },
+  "keywords": [
+    "typescript",
+    "value",
+    "generate",
+    "generator",
+    "dummy",
+    "random",
+    "pseudo-random",
+    "demo",
+    "data",
+    "create"
+  ],
+  "author": "Brannon Hall",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brannonh/value-sculptor/issues"
+  },
+  "homepage": "https://github.com/brannonh/value-sculptor#readme",
+  "dependencies": {
+    "typescript": "^3.7.3"
+  }
+}
