@@ -4,7 +4,9 @@
   "description": "Typescript library for generating pseudo-random dummy values",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint . --ext .ts,.tsx",
+    "lint:fix": "npx eslint . --ext .ts,.tsx --fix"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,14 @@
     "url": "https://github.com/brannonh/value-sculptor/issues"
   },
   "homepage": "https://github.com/brannonh/value-sculptor#readme",
-  "dependencies": {
-    "typescript": "^3.7.3"
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.17.0",
+    "@typescript-eslint/parser": "^2.17.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "prettier": "1.19.1",
+    "typescript": "^3.7.5"
   }
 }
