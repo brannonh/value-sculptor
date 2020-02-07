@@ -12,5 +12,9 @@ export default function generateValue(
     return generateString(options);
   } else if (type == GeneratorType.Select) {
     return generateSelect(options);
+  } else {
+    throw new TypeError(
+      'type object must be of type GeneratorType'
+    );
   }
 }

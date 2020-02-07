@@ -7,8 +7,8 @@ function rand(max: number, min = 0): number {
 export function generateNumber(options: GeneratorOptions): number {
   // Make sure we have a GeneratorOptionsNumber object.
   if ('max' in options) {
-    const min = options.min ? options.min : 0;
-    const max = options.max ? options.max : 100;
+    const min = options.min ?? 0;
+    const max = options.max;
     return rand(max, min);
   } else {
     throw new TypeError(
@@ -36,16 +36,41 @@ export function generateString(options: GeneratorOptions): string {
     // Check for a GeneratorOptionsPaddedstring object.
     if ('padLengthStart' in options || 'padLengthEnd' in options) {
       if (options.padType == PadType.Start) {
+        // Pad the start of the string.
         value = value.padStart(
           options.padLengthStart,
           options.padCharStart ?? ' '
         );
       } else if (options.padType == PadType.End) {
+        // Pad the end of the string.
         value = value.padEnd(options.padLengthEnd, options.padCharEnd ?? ' ');
       } else if (options.padType == PadType.Both) {
-        // TODO: Finish.
+        // Pad both sides of the string.
+        if (options.padPriority == PadType.Start) {
+          // Begin with the start of the string.
+          // options.padLengthStart should be less than options.padLengthEnd.
+          value = value.padStart(
+            options.padLengthStart,
+            options.padCharStart ?? ' '
+          );
+          value = value.padEnd(options.padLengthEnd, options.padCharEnd ?? ' ');
+        } else {
+          // Begin with the end of the string.
+          // options.padLengthEnd should be less than options.padLengthStart.
+          value = value.padEnd(options.padLengthEnd, options.padCharEnd ?? ' ');
+          value = value.padStart(
+            options.padLengthStart,
+            options.padCharStart ?? ' '
+          );
+        }
+      } else {
+        throw new TypeError(
+          'padType object must be of type PadType'
+        );
       }
     }
+
+    return value;
   } else {
     throw new TypeError(
       'options object must be of type GeneratorOptionsString or GeneratorOptionsPaddedString'
@@ -56,7 +81,7 @@ export function generateString(options: GeneratorOptions): string {
 export function generateSelect(options: GeneratorOptions): string {
   // Make sure we have a GeneratorOptionsSelect object.
   if ('possibles' in options) {
-    const i = rand(options.possibles.length);
+    const i = rand(options.possibles.length - 1);
     return options.possibles[i];
   } else {
     throw new TypeError(
