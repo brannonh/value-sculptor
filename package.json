@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Library for generating pseudo-random dummy values",
   "main": "lib/index.js",
+  "files": ["lib/**/*"],
   "scripts": {
     "build": "tsc",
     "test": "npx jest --verbose",
@@ -10,7 +11,13 @@
     "test:w": "npx jest --verbose --watch",
     "test:qw": "npx jest --watch",
     "lint": "npx eslint . --ext .ts,.tsx",
-    "lint:fix": "npx eslint . --ext .ts,.tsx --fix"
+    "lint:fix": "npx eslint . --ext .ts,.tsx --fix",
+
+    "prepare": "npm run build",
+    "prePublishOnly": "npm run lint:fix && npm run test",
+    "preversion": "npm run lint:fix",
+    "version": "npm run lint:fix && git add -A",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
