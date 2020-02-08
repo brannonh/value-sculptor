@@ -64,9 +64,7 @@ export function generateString(options: GeneratorOptions): string {
           );
         }
       } else {
-        throw new TypeError(
-          'padType object must be of type PadType'
-        );
+        throw new TypeError('padType object must be of type PadType');
       }
     }
 

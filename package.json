@@ -1,7 +1,7 @@
 {
   "name": "value-sculptor",
   "version": "0.0.1",
-  "description": "Typescript library for generating pseudo-random dummy values",
+  "description": "Library for generating pseudo-random dummy values",
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",

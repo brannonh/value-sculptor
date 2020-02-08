@@ -1,5 +1,5 @@
 import generateValue from '../src';
-import { GeneratorOptions, GeneratorType } from '../src/types';
+import { GeneratorType } from '../src/types';
 
 describe('generateValue : select', () => {
   test('should return one value from provided array (GO: { possibles })', () => {

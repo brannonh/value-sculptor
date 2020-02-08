@@ -1,5 +1,5 @@
 import generateValue from '../src';
-import { GeneratorOptions, GeneratorType } from '../src/types';
+import { GeneratorType } from '../src/types';
 
 describe('generateValue : number', () => {
   test('should generate number between 0 and max (GO: { max })', () => {

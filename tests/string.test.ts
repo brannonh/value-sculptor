@@ -1,5 +1,5 @@
 import generateValue from '../src';
-import { GeneratorOptions, GeneratorType, StringType, PadType } from '../src/types';
+import { GeneratorType, StringType, PadType } from '../src/types';
 
 describe('generateValue : string', () => {
   // Test all string types (except custom) in this test. Subsequent tests should
