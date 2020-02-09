@@ -1,8 +1,7 @@
 import { GeneratorType, GeneratorOptions } from './types';
 import { generateNumber, generateString, generateSelect } from './generators';
 
-// TODO : Create tests.
-export default function generateValue(
+export default function sculpt(
   type: GeneratorType,
   options: GeneratorOptions
 ): string | number | undefined {
@@ -16,3 +15,6 @@ export default function generateValue(
     throw new TypeError('type object must be of type GeneratorType');
   }
 }
+
+export { GeneratorOptions, GeneratorType };
+export { StringType, PadType } from './types';

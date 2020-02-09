@@ -1,18 +1,18 @@
-import generateValue from '../src';
+import sculpt from '../src';
 import { GeneratorOptions, GeneratorType, StringType } from '../src/types';
 
-describe('generateValue : errors', () => {
+describe('sculpt : errors', () => {
   // General
   test('should throw TypeError for invalid type argument', () => {
     expect(() => {
-      generateValue(99, { max: 100 });
+      sculpt(99, { max: 100 });
     }).toThrow(TypeError);
   });
 
   // Number
   test('should throw TypeError for invalid options argument (GeneratorOptionsNumber)', () => {
     expect(() => {
-      generateValue(GeneratorType.Number, ({
+      sculpt(GeneratorType.Number, ({
         george: 'fred ',
       } as unknown) as GeneratorOptions);
     }).toThrow(TypeError);
@@ -21,7 +21,7 @@ describe('generateValue : errors', () => {
   // Select
   test('should throw TypeError for invalid options argument (GeneratorOptionsSelect)', () => {
     expect(() => {
-      generateValue(GeneratorType.Select, ({
+      sculpt(GeneratorType.Select, ({
         george: 'fred ',
       } as unknown) as GeneratorOptions);
     }).toThrow(TypeError);
@@ -30,7 +30,7 @@ describe('generateValue : errors', () => {
   // String
   test('should throw TypeError for invalid options argument (GeneratorOptionsString | GeneratorOptionsPaddedString)', () => {
     expect(() => {
-      generateValue(GeneratorType.String, ({
+      sculpt(GeneratorType.String, ({
         george: 'fred ',
       } as unknown) as GeneratorOptions);
     }).toThrow(TypeError);
@@ -38,7 +38,7 @@ describe('generateValue : errors', () => {
 
   test('should throw TypeError for invalid padType', () => {
     expect(() => {
-      generateValue(GeneratorType.String, {
+      sculpt(GeneratorType.String, {
         length: 10,
         stringType: StringType.Alpha,
         padType: 99,
