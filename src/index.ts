@@ -16,5 +16,5 @@ export default function sculpt(
   }
 }
 
-export { GeneratorOptions, GeneratorType };
+export { GeneratorType };
 export { StringType, PadType } from './types';
