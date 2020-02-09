@@ -1,9 +1,11 @@
 {
   "name": "value-sculptor",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Library for generating pseudo-random dummy values",
   "main": "lib/index.js",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "test": "npx jest --verbose",
@@ -12,7 +14,6 @@
     "test:qw": "npx jest --watch",
     "lint": "npx eslint . --ext .ts,.tsx",
     "lint:fix": "npx eslint . --ext .ts,.tsx --fix",
-
     "prepare": "npm run build",
     "prePublishOnly": "npm run lint:fix && npm run test",
     "preversion": "npm run lint:fix",
