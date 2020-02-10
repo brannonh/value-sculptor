@@ -77,7 +77,7 @@ The options object should follow one of the following patterns, corresponding wi
   length: 1,
   // required   the type of string to generate (see StringType)
   stringType: StringType.Alpha,
-  //            a string of possible characters
+  //            a string of possible characters, overrides stringType
   charSet: 'ABCXYZ',
   //            the type of padding to use (see PadType), omit for no padding
   padType: PadType.Start,
