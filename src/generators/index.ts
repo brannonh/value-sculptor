@@ -18,7 +18,7 @@ export function generateNumber(options: GeneratorOptions): number {
 }
 
 export function generateString(options: GeneratorOptions): string {
-  // Make sure we have a GeneratorOptionsSelect object.
+  // Make sure we have a GeneratorOptionsString object.
   if ('stringType' in options) {
     // Use any passed character set, otherwise use a default set.
     let charSet = options.charSet?.split('');
@@ -33,7 +33,7 @@ export function generateString(options: GeneratorOptions): string {
       value += charSet[i];
     }
 
-    // Check for a GeneratorOptionsPaddedstring object.
+    // Check for a GeneratorOptionsPaddedString object.
     if ('padLengthStart' in options || 'padLengthEnd' in options) {
       if (options.padType == PadType.Start) {
         // Pad the start of the string.
