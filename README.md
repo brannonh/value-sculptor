@@ -74,3 +74,7 @@ The options object should follow one of the following patterns, corresponding wi
   charSet: 'ABCXYZ'               //            a string of possible characters
 }
 ```
+
+##### StringType
+
+##### PadType
