@@ -68,7 +68,7 @@ The options object should follow one of the following patterns, corresponding wi
 | Key               | Type        | Required                | Default | Description                                                                                             |
 | ---               | ---         | :--:                    | ---     | ---                                                                                                     |
 | `length`          | integer     | :ballot_box_with_check: |         | The length of the string                                                                                |
-| `stringType`      | StringType  | :ballot_box_with_check: |         | The type of string to generate (see [StringType](https://github.com/brannonh/value-sculptor#stringtype))                                                         |
+| `stringType`      | StringType  | :ballot_box_with_check: |         | The type of string to generate (see [StringType](./#stringtype))                                                         |
 | `charSet`         | string      |                         |         | A string of possible characters, overrides `stringType`                                                 |
 | `padCharEnd`      | string      |                         | space   | The character to use for padding on the right, omit for spaces                                          |
 | `padCharStart`    | string      |                         | space   | The character to use for padding on the left, omit for spaces                                           |
