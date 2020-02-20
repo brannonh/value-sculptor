@@ -1,6 +1,6 @@
 {
   "name": "value-sculptor",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Library for generating pseudo-random dummy values",
   "main": "lib/index.js",
   "files": [
