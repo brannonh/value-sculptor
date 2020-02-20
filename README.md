@@ -1,6 +1,6 @@
 # value-sculptor
 
-Value Sculptor is a library for generating pseudo-random values that can be used as example data or for testing purposes. It is not meant to generate realistic content data (for that I recommend [faker.js](https://github.com/Marak/Faker.js#readme)), but rather values that follow a known pattern.
+Value Sculptor is a library for generating pseudo-random values that can be used for various purposes (e.g., as example data, for testing purposes, etc.). It is not meant to generate realistic content data (for that I recommend [faker.js](https://github.com/Marak/Faker.js#readme)), but rather values that follow a known pattern.
 
 It is written in TypeScript and includes type definitions.
 
