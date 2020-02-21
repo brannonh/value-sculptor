@@ -4,6 +4,10 @@ Value Sculptor is a library for generating pseudo-random values that can be used
 
 It is written in TypeScript and includes type definitions.
 
+## Status
+
+**Value Sculptor should be considered under development.** All releases prior to 1.0.0 could introduce breaking changes. Every effort will be made to ensure that documentation is accurate for each release.
+
 ## Installation
 
 ```shell
