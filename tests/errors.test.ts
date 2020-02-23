@@ -42,7 +42,7 @@ describe('sculpt : errors', () => {
         length: 10,
         stringType: StringType.Alpha,
         padType: 99,
-        padLengthStart: 15,
+        padLengthLeft: 15,
       });
     }).toThrow(TypeError);
   });

@@ -34,33 +34,42 @@ export function generateString(options: GeneratorOptions): string {
     }
 
     // Check for a GeneratorOptionsPaddedString object.
-    if ('padLengthStart' in options || 'padLengthEnd' in options) {
-      if (options.padType == PadType.Start) {
+    if ('padLengthLeft' in options || 'padLengthRight' in options) {
+      if (options.padType == PadType.Left) {
         // Pad the start of the string.
         value = value.padStart(
-          options.padLengthStart,
-          options.padCharStart ?? ' '
+          options.padLengthLeft,
+          options.padCharLeft ?? ' '
         );
-      } else if (options.padType == PadType.End) {
+      } else if (options.padType == PadType.Right) {
         // Pad the end of the string.
-        value = value.padEnd(options.padLengthEnd, options.padCharEnd ?? ' ');
+        value = value.padEnd(
+          options.padLengthRight,
+          options.padCharRight ?? ' '
+        );
       } else if (options.padType == PadType.Both) {
         // Pad both sides of the string.
-        if (options.padPriority == PadType.Start) {
+        if (options.padPriority == PadType.Left) {
           // Begin with the start of the string.
           // options.padLengthStart should be less than options.padLengthEnd.
           value = value.padStart(
-            options.padLengthStart,
-            options.padCharStart ?? ' '
+            options.padLengthLeft,
+            options.padCharLeft ?? ' '
           );
-          value = value.padEnd(options.padLengthEnd, options.padCharEnd ?? ' ');
+          value = value.padEnd(
+            options.padLengthRight,
+            options.padCharRight ?? ' '
+          );
         } else {
           // Begin with the end of the string.
           // options.padLengthEnd should be less than options.padLengthStart.
-          value = value.padEnd(options.padLengthEnd, options.padCharEnd ?? ' ');
+          value = value.padEnd(
+            options.padLengthRight,
+            options.padCharRight ?? ' '
+          );
           value = value.padStart(
-            options.padLengthStart,
-            options.padCharStart ?? ' '
+            options.padLengthLeft,
+            options.padCharLeft ?? ' '
           );
         }
       } else {

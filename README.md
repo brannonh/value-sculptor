@@ -69,17 +69,17 @@ The options object should follow one of the following patterns, corresponding wi
 
 #### String
 
-| Key               | Type        | Required                | Default | Description                                                                                             |
-| ---               | ---         | :--:                    | ---     | ---                                                                                                     |
-| `length`          | integer     | :ballot_box_with_check: |         | The length of the string                                                                                |
-| `stringType`      | StringType  | :ballot_box_with_check: |         | The type of string to generate (see [StringType](https://github.com/brannonh/value-sculptor#stringtype))                                                         |
-| `charSet`         | string      |                         |         | A string of possible characters, overrides `stringType`                                                 |
-| `padCharEnd`      | string      |                         | space   | The character to use for padding on the right, omit for spaces                                          |
-| `padCharStart`    | string      |                         | space   | The character to use for padding on the left, omit for spaces                                           |
-| `padLengthEnd`    | integer     |                         |         | the length of the string after padding on the right, **required** for `PadType.Both` and `PadType.End`  |
-| `padLengthStart`  | integer     |                         |         | The length of the string after padding on the left, **required** for `PadType.Both` and `PadType.Start` |
-| `padPriority`     | PadType     |                         |         | The side of the string to pad first, **required** for `PadType.Both`                                    |
-| `padType`         | PadType     |                         |         | The type of padding to use (see [PadType](https://github.com/brannonh/value-sculptor#padtype)), omit for no padding                                           |
+| Key               | Type          | Required                | Default | Description                                                                                               |
+| ---               | ---           | :--:                    | ---     | ---                                                                                                       |
+| `length`          | `Integer`     | :ballot_box_with_check: |         | The length of the string                                                                                  |
+| `stringType`      | `StringType`  | :ballot_box_with_check: |         | The type of string to generate (see [StringType](#StringType))                                            |
+| `charSet`         | `String`      |                         |         | A string of possible characters, overrides `stringType`                                                   |
+| `padCharRight`    | `String`      |                         | space   | The character to use for padding on the right, omit for spaces                                            |
+| `padCharLeft`     | `String`      |                         | space   | The character to use for padding on the left, omit for spaces                                             |
+| `padLengthRight`  | `Integer`     |                         |         | The length of the string after padding on the right, **required** for `PadType.Both` and `PadType.Right`  |
+| `padLengthLeft`   | `Integer`     |                         |         | The length of the string after padding on the left, **required** for `PadType.Both` and `PadType.Left`    |
+| `padPriority`     | `PadType`     |                         |         | The side of the string to pad first, **required** for `PadType.Both`                                      |
+| `padType`         | `PadType`     |                         |         | The type of padding to use (see [PadType](#PadType)), omit for no padding                                 |
 
 ##### StringType
 
@@ -97,7 +97,7 @@ The options object should follow one of the following patterns, corresponding wi
 | `StringType.AlphaUpperNumeric`        | `A-Z`, `0-9`                                          |
 | `StringType.AlphaUpperNumericSymbol`  | `A-Z`, `0-9`, `~!@#$%^&*-_=+{[()]}\|:;,<>.?`          |
 | `StringType.AlphaUpperSymbol`         | `A-Z`, `~!@#$%^&*-_=+{[()]}\|:;,<>.?`                 |
-| `StringType.Custom`                   | developer-defined                                     |
+| `StringType.Custom`                   | developer-defined via `charSet`                       |
 | `StringType.Numeric`                  | `0-9`                                                 |
 | `StringType.NumericSymbol`            | `0-9`, `~!@#$%^&*-_=+{[()]}\|:;,<>.?`                 |
 | `StringType.Symbol`                   | `~!@#$%^&*-_=+{[()]}\|:;,<>.?`                        |
@@ -107,5 +107,5 @@ The options object should follow one of the following patterns, corresponding wi
 | Value           | Description                       |
 | ---             | ---                               |
 | `PadType.Both`  | Pad both sides of the string.     |
-| `PadType.End`   | Pad the right side of the string. |
-| `PadType.Start` | Pad the left side of the string.  |
+| `PadType.Left`  | Pad the left side of the string.  |
+| `PadType.Right` | Pad the right side of the string. |

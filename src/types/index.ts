@@ -24,8 +24,8 @@ export enum StringType {
 }
 
 export enum PadType {
-  Start = 1,
-  End,
+  Left = 1,
+  Right,
   Both,
 }
 
@@ -67,11 +67,11 @@ interface GeneratorOptionsString<T extends StringType> {
 interface GeneratorOptionsPaddedString<T extends StringType, P extends PadType>
   extends GeneratorOptionsString<T> {
   padType: P;
-  padPriority: P extends PadType.Both ? PadType.Start | PadType.End : never;
-  padLengthStart: P extends PadType.Start | PadType.Both ? number : never;
-  padLengthEnd: P extends PadType.End | PadType.Both ? number : never;
-  padCharStart?: P extends PadType.Start | PadType.Both ? string : never;
-  padCharEnd?: P extends PadType.End | PadType.Both ? string : never;
+  padPriority: P extends PadType.Both ? PadType.Left | PadType.Right : never;
+  padLengthLeft: P extends PadType.Left | PadType.Both ? number : never;
+  padLengthRight: P extends PadType.Right | PadType.Both ? number : never;
+  padCharLeft?: P extends PadType.Left | PadType.Both ? string : never;
+  padCharRight?: P extends PadType.Right | PadType.Both ? string : never;
 }
 
 interface GeneratorOptionsSelect {

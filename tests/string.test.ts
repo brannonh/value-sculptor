@@ -112,56 +112,56 @@ describe('sculpt : string', () => {
     expect(value).toMatch(/[ABC123xyz789]{10}/);
   });
 
-  test('should generate string, space-padded at beginning (GO: { length, stringType, padType, padLengthStart })', () => {
+  test('should generate string, space-padded at beginning (GO: { length, stringType, padType, padLengthLeft })', () => {
     const value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.Alpha,
-      padType: PadType.Start,
-      padLengthStart: 15,
+      padType: PadType.Left,
+      padLengthLeft: 15,
     });
     expect(value).toMatch(/[ ]{5}[a-zA-Z]{10}/);
   });
 
-  test('should generate string, space-padded at end (GO: { length, stringType, padType, padLengthEnd })', () => {
+  test('should generate string, space-padded at end (GO: { length, stringType, padType, padLengthRight })', () => {
     const value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.AlphaUpper,
-      padType: PadType.End,
-      padLengthEnd: 15,
+      padType: PadType.Right,
+      padLengthRight: 15,
     });
     expect(value).toMatch(/[A-Z]{10}[ ]{5}/);
   });
 
-  test('should generate string, padded at beginning with provided character (GO: { length, stringType, padType, padLengthStart, padCharStart })', () => {
+  test('should generate string, padded at beginning with provided character (GO: { length, stringType, padType, padLengthLeft, padCharLeft })', () => {
     const value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.AlphaLower,
-      padType: PadType.Start,
-      padCharStart: '*',
-      padLengthStart: 15,
+      padType: PadType.Left,
+      padCharLeft: '*',
+      padLengthLeft: 15,
     });
     expect(value).toMatch(/[*]{5}[a-z]{10}/);
   });
 
-  test('should generate string, padded at end with provided character (GO: { length, stringType, padType, padLengthEnd, padCharEnd })', () => {
+  test('should generate string, padded at end with provided character (GO: { length, stringType, padType, padLengthRight, padCharRight })', () => {
     const value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.Numeric,
-      padType: PadType.End,
-      padCharEnd: '.',
-      padLengthEnd: 15,
+      padType: PadType.Right,
+      padCharRight: '.',
+      padLengthRight: 15,
     });
     expect(value).toMatch(/[0-9]{10}[.]{5}/);
   });
 
-  test('should generate string, space-padded at both ends (GO: { length, stringType, padType, padPriority, padLengthStart, padLengthEnd })', () => {
+  test('should generate string, space-padded at both ends (GO: { length, stringType, padType, padPriority, padLengthLeft, padLengthRight })', () => {
     let value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.AlphaNumeric,
       padType: PadType.Both,
-      padPriority: PadType.Start,
-      padLengthStart: 15,
-      padLengthEnd: 20,
+      padPriority: PadType.Left,
+      padLengthLeft: 15,
+      padLengthRight: 20,
     });
     expect(value).toMatch(/[ ]{5}[a-zA-Z0-9]{10}[ ]{5}/);
 
@@ -170,23 +170,23 @@ describe('sculpt : string', () => {
       length: 10,
       stringType: StringType.AlphaUpperNumeric,
       padType: PadType.Both,
-      padPriority: PadType.End,
-      padLengthStart: 15,
-      padLengthEnd: 20,
+      padPriority: PadType.Right,
+      padLengthLeft: 15,
+      padLengthRight: 20,
     });
     expect(value).toMatch(/[A-Z0-9]{10}[ ]{10}/);
   });
 
-  test('should generate string, padded at both ends with provided characters (GO: { length, stringType, padType, padPriority, padLengthStart, padLengthEnd, padCharStart, padCharEnd })', () => {
+  test('should generate string, padded at both ends with provided characters (GO: { length, stringType, padType, padPriority, padLengthLeft, padLengthRight, padCharLeft, padCharRight })', () => {
     let value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.AlphaLowerNumeric,
       padType: PadType.Both,
-      padPriority: PadType.End,
-      padCharStart: '!',
-      padLengthStart: 20,
-      padCharEnd: '~',
-      padLengthEnd: 15,
+      padPriority: PadType.Right,
+      padCharLeft: '!',
+      padLengthLeft: 20,
+      padCharRight: '~',
+      padLengthRight: 15,
     });
     expect(value).toMatch(/[!]{5}[a-z0-9]{10}[~]{5}/);
 
@@ -195,70 +195,70 @@ describe('sculpt : string', () => {
       length: 10,
       stringType: StringType.Symbol,
       padType: PadType.Both,
-      padPriority: PadType.Start,
-      padCharStart: 'o',
-      padLengthStart: 20,
-      padCharEnd: 'x',
-      padLengthEnd: 15,
+      padPriority: PadType.Left,
+      padCharLeft: 'o',
+      padLengthLeft: 20,
+      padCharRight: 'x',
+      padLengthRight: 15,
     });
     expect(value).toMatch(/[o]{10}[~!@#$%^&*\-_=+{[()\]}|:;,<>.?]{10}/);
   });
 
-  test('should generate string from provided character set, space-padded at beginning (GO: { length, stringType, charSet, padType, padLengthStart })', () => {
+  test('should generate string from provided character set, space-padded at beginning (GO: { length, stringType, charSet, padType, padLengthLeft })', () => {
     const value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.Custom,
       charSet: 'ABC123xyz789',
-      padType: PadType.Start,
-      padLengthStart: 15,
+      padType: PadType.Left,
+      padLengthLeft: 15,
     });
     expect(value).toMatch(/[ ]{5}[ABC123xyz789]{10}/);
   });
 
-  test('should generate string from provided character set, space-padded at end (GO: { length, stringType, charSet, padType, padLengthEnd })', () => {
+  test('should generate string from provided character set, space-padded at end (GO: { length, stringType, charSet, padType, padLengthRight })', () => {
     const value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.Custom,
       charSet: 'ABC123xyz789',
-      padType: PadType.End,
-      padLengthEnd: 15,
+      padType: PadType.Right,
+      padLengthRight: 15,
     });
     expect(value).toMatch(/[ABC123xyz789]{10}[ ]{5}/);
   });
 
-  test('should generate string from provided character set, padded at beginning with provided character (GO: { length, stringType, charSet, padType, padLengthStart, padCharStart })', () => {
+  test('should generate string from provided character set, padded at beginning with provided character (GO: { length, stringType, charSet, padType, padLengthLeft, padCharLeft })', () => {
     const value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.Custom,
       charSet: 'ABC123xyz789',
-      padType: PadType.Start,
-      padCharStart: '%',
-      padLengthStart: 15,
+      padType: PadType.Left,
+      padCharLeft: '%',
+      padLengthLeft: 15,
     });
     expect(value).toMatch(/[%]{5}[ABC123xyz789]{10}/);
   });
 
-  test('should generate string from provided character set, padded at end with provided character (GO: { length, stringType, charSet, padType, padLengthEnd, padCharEnd })', () => {
+  test('should generate string from provided character set, padded at end with provided character (GO: { length, stringType, charSet, padType, padLengthRight, padCharRight })', () => {
     const value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.Custom,
       charSet: 'ABC123xyz789',
-      padType: PadType.End,
-      padCharEnd: '-',
-      padLengthEnd: 15,
+      padType: PadType.Right,
+      padCharRight: '-',
+      padLengthRight: 15,
     });
     expect(value).toMatch(/[ABC123xyz7899]{10}[-]{5}/);
   });
 
-  test('should generate string from provided character set, space-padded at both ends (GO: { length, stringType, charSet, padType, padPriority, padLengthStart, padLengthEnd })', () => {
+  test('should generate string from provided character set, space-padded at both ends (GO: { length, stringType, charSet, padType, padPriority, padLengthLeft, padLengthRight })', () => {
     let value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.Custom,
       charSet: 'ABC123xyz7899',
       padType: PadType.Both,
-      padPriority: PadType.Start,
-      padLengthStart: 15,
-      padLengthEnd: 20,
+      padPriority: PadType.Left,
+      padLengthLeft: 15,
+      padLengthRight: 20,
     });
     expect(value).toMatch(/[ ]{5}[ABC123xyz7899]{10}[ ]{5}/);
 
@@ -268,24 +268,24 @@ describe('sculpt : string', () => {
       stringType: StringType.Custom,
       charSet: 'ABC123xyz7899',
       padType: PadType.Both,
-      padPriority: PadType.End,
-      padLengthStart: 15,
-      padLengthEnd: 20,
+      padPriority: PadType.Right,
+      padLengthLeft: 15,
+      padLengthRight: 20,
     });
     expect(value).toMatch(/[ABC123xyz7899]{10}[ ]{10}/);
   });
 
-  test('should generate string from provided character set, padded at both ends with provided characters (GO: { length, stringType, charSet, padType, padPriority, padLengthStart, padLengthEnd, padCharStart, padCharEnd })', () => {
+  test('should generate string from provided character set, padded at both ends with provided characters (GO: { length, stringType, charSet, padType, padPriority, padLengthLeft, padLengthRight, padCharLeft, padCharRight })', () => {
     let value = sculpt(GeneratorType.String, {
       length: 10,
       stringType: StringType.Custom,
       charSet: 'ABC123xyz7899',
       padType: PadType.Both,
-      padPriority: PadType.End,
-      padCharStart: '!',
-      padLengthStart: 20,
-      padCharEnd: '~',
-      padLengthEnd: 15,
+      padPriority: PadType.Right,
+      padCharLeft: '!',
+      padLengthLeft: 20,
+      padCharRight: '~',
+      padLengthRight: 15,
     });
     expect(value).toMatch(/[!]{5}[ABC123xyz7899]{10}[~]{5}/);
 
@@ -295,11 +295,11 @@ describe('sculpt : string', () => {
       stringType: StringType.Custom,
       charSet: 'ABC123xyz7899',
       padType: PadType.Both,
-      padPriority: PadType.Start,
-      padCharStart: 'o',
-      padLengthStart: 20,
-      padCharEnd: 'x',
-      padLengthEnd: 15,
+      padPriority: PadType.Left,
+      padCharLeft: 'o',
+      padLengthLeft: 20,
+      padCharRight: 'x',
+      padLengthRight: 15,
     });
     expect(value).toMatch(/[o]{10}[ABC123xyz7899]{10}/);
   });
