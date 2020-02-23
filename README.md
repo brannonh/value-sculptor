@@ -74,10 +74,10 @@ The options object should follow one of the following patterns, corresponding wi
 | `length`          | `Integer`     | :ballot_box_with_check: |         | The length of the string                                                                                  |
 | `stringType`      | `StringType`  | :ballot_box_with_check: |         | The type of string to generate (see [StringType](#StringType))                                            |
 | `charSet`         | `String`      |                         |         | A string of possible characters, overrides `stringType`                                                   |
-| `padCharRight`    | `String`      |                         | space   | The character to use for padding on the right, omit for spaces                                            |
 | `padCharLeft`     | `String`      |                         | space   | The character to use for padding on the left, omit for spaces                                             |
-| `padLengthRight`  | `Integer`     |                         |         | The length of the string after padding on the right, **required** for `PadType.Both` and `PadType.Right`  |
+| `padCharRight`    | `String`      |                         | space   | The character to use for padding on the right, omit for spaces                                            |
 | `padLengthLeft`   | `Integer`     |                         |         | The length of the string after padding on the left, **required** for `PadType.Both` and `PadType.Left`    |
+| `padLengthRight`  | `Integer`     |                         |         | The length of the string after padding on the right, **required** for `PadType.Both` and `PadType.Right`  |
 | `padPriority`     | `PadType`     |                         |         | The side of the string to pad first, **required** for `PadType.Both`                                      |
 | `padType`         | `PadType`     |                         |         | The type of padding to use (see [PadType](#PadType)), omit for no padding                                 |
 
