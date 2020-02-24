@@ -1,6 +1,6 @@
 {
   "name": "value-sculptor",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Library for generating pseudo-random values that follow known patterns and can be used in various ways (e.g., as example data, for testing purposes, etc.).",
   "main": "lib/index.js",
   "files": [
