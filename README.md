@@ -109,3 +109,7 @@ The options object should follow one of the following patterns, corresponding wi
 | `PadType.Both`  | Pad both sides of the string.     |
 | `PadType.Left`  | Pad the left side of the string.  |
 | `PadType.Right` | Pad the right side of the string. |
+
+## Contributing
+
+See our [guidelines for contributing](https://github.com/brannonh/value-sculptor/blob/master/CONTRIBUTING.md).

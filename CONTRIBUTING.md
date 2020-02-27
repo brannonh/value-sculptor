@@ -17,7 +17,7 @@ We use GitHub issues to track and prioritize development, so that's [the best pl
 
 - Open a [new bug issue](https://github.com/brannonh/value-sculptor/issues/new?assignees=brannonh&labels=bug&template=bug-report.md&title=) if you find something that seems to behave incorrectly.
 - Open a [new feature issue](https://github.com/brannonh/value-sculptor/issues/new?assignees=brannonh&labels=enhancement&template=feature-request.md&title=) if you have a suggestion for new functionality.
-- Create a [pull request]() if you have updates that are ready to be merged into the repository.
+- Create a [pull request](https://github.com/brannonh/value-sculptor/compare?expand=1) if you have updates that are ready to be merged into the repository.
 
 ## Bug Issues
 
