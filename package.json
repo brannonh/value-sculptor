@@ -25,16 +25,10 @@
     "url": "git+https://github.com/brannonh/value-sculptor.git"
   },
   "keywords": [
-    "typescript",
-    "value",
-    "generate",
-    "generator",
-    "dummy",
-    "random",
-    "pseudo-random",
-    "demo",
-    "data",
-    "create"
+    "typescript", "value", "generate", "generator", "dummy", "random",
+    "pseudo-random", "demo", "data", "create", "test", "pattern", "example",
+    "sample", "content", "utility", "spawn", "make", "propagate", "model",
+    "substitute", "produce", "sequence"
   ],
   "author": "Brannon Hall",
   "license": "MIT",
