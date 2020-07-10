@@ -25,10 +25,29 @@
     "url": "git+https://github.com/brannonh/value-sculptor.git"
   },
   "keywords": [
-    "typescript", "value", "generate", "generator", "dummy", "random",
-    "pseudo-random", "demo", "data", "create", "test", "pattern", "example",
-    "sample", "content", "utility", "spawn", "make", "propagate", "model",
-    "substitute", "produce", "sequence"
+    "typescript",
+    "value",
+    "generate",
+    "generator",
+    "dummy",
+    "random",
+    "pseudo-random",
+    "demo",
+    "data",
+    "create",
+    "test",
+    "pattern",
+    "example",
+    "sample",
+    "content",
+    "utility",
+    "spawn",
+    "make",
+    "propagate",
+    "model",
+    "substitute",
+    "produce",
+    "sequence"
   ],
   "author": "Brannon Hall",
   "license": "MIT",
@@ -46,7 +65,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.1.0",
     "prettier": "1.19.1",
-    "ts-jest": "^25.0.0",
+    "ts-jest": "^26.1.1",
     "typescript": "^3.7.5"
   }
 }
