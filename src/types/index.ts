@@ -57,24 +57,24 @@ interface Options<G extends GeneratorType> {
   type: G;
 }
 
-interface OptionsNumber extends Options<GeneratorType.Number> {
+export interface OptionsNumber extends Options<GeneratorType.Number> {
   min?: number;
   max: number;
 }
 
-interface OptionsSelect extends Options<GeneratorType.Select> {
+export interface OptionsSelect extends Options<GeneratorType.Select> {
   possibles: string[];
 }
 
-interface OptionsString<S extends StringType>
+interface OptionsStringSimple<S extends StringType>
     extends Options<GeneratorType.String> {
   length: number;
   stringType: S;
-  charSet?: string;
+  charSet?: S extends StringType.Custom ? string : never;
 }
 
 interface OptionsStringPadded<S extends StringType, P extends PadType>
-    extends OptionsString<S> {
+    extends OptionsStringSimple<S> {
   padType: P;
   padPriority: P extends PadType.Both ? PadType.Left | PadType.Right : never;
   padLengthLeft: P extends PadType.Left | PadType.Both ? number : never;
@@ -83,8 +83,11 @@ interface OptionsStringPadded<S extends StringType, P extends PadType>
   padCharRight?: P extends PadType.Right | PadType.Both ? string : never;
 }
 
-export type GeneratorOptions =
+export type OptionsString =
+    OptionsStringSimple<StringType>
+  | OptionsStringPadded<StringType, PadType>;
+
+export type SculptOptions =
     OptionsNumber
   | OptionsSelect
-  | OptionsString<StringType>
-  | OptionsStringPadded<StringType, PadType>;
+  | OptionsString;

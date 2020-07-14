@@ -1,115 +1,76 @@
-import { CharacterSets, GeneratorOptions, PadType } from '../types';
+import { CharacterSets, OptionsNumber, OptionsSelect, OptionsString, PadType } from '../types';
 
 function rand(max: number, min = 0): number {
   return min + Math.floor(Math.random() * (max - min + 1));
 }
 
-export function generateNumber(options: GeneratorOptions): number {
-  // Make sure we have a GeneratorOptionsNumber object.
-  if ('max' in options) {
-    const min = options.min ?? 0;
-    const max = options.max;
-    return rand(max, min);
-  } else {
-    throw new TypeError(
-      'options object must be of type GeneratorOptionsNumber'
-    );
-  }
+export function generateNumber(options: OptionsNumber): number {
+  return rand(options.max, options.min ?? 0);
 }
 
-export function generateString(options: GeneratorOptions): string {
-  // Make sure we have a GeneratorOptionsString object.
-  if ('stringType' in options) {
-    // Use any passed character set, otherwise use a default set.
-    let charSet = options.charSet?.split('');
-    if (!charSet) {
-      charSet = CharacterSets[options.stringType];
-    }
+export function generateSelect(options: OptionsSelect): string {
+  const i = rand(options.possibles.length - 1);
+  return options.possibles[i];
+}
 
-    // Generate value.
-    let value = '';
-    while (value.length < options.length) {
-      const i = rand(charSet.length - 1);
-      value += charSet[i];
-    }
+export function generateString(options: OptionsString): string {
+  // Use any passed character set, otherwise use a default set.
+  // A passed character set requires StringType.Custom.
+  let charSet = options.charSet?.split('');
+  if (!charSet) {
+    charSet = CharacterSets[options.stringType];
+  }
 
-    // Check for a GeneratorOptionsPaddedString object.
-    if ('padLengthLeft' in options || 'padLengthRight' in options) {
-      if (options.padType == PadType.Left) {
-        // Pad the start of the string.
+  // Generate value.
+  let value = '';
+  while (value.length < options.length) {
+    const i = rand(charSet.length - 1);
+    value += charSet[i];
+  }
+
+  // Check for a OptionsStringPadded object.
+  if ('padLengthLeft' in options || 'padLengthRight' in options) {
+    if (options.padType == PadType.Left) {
+      // Pad the start of the string.
+      value = value.padStart(
+        options.padLengthLeft,
+        options.padCharLeft ?? ' '
+      );
+    } else if (options.padType == PadType.Right) {
+      // Pad the end of the string.
+      value = value.padEnd(
+        options.padLengthRight,
+        options.padCharRight ?? ' '
+      );
+    } else if (options.padType == PadType.Both) {
+      // Pad both sides of the string.
+      if (options.padPriority == PadType.Left) {
+        // Begin with the start of the string.
+        // options.padLengthStart should be less than options.padLengthEnd.
         value = value.padStart(
           options.padLengthLeft,
           options.padCharLeft ?? ' '
         );
-      } else if (options.padType == PadType.Right) {
-        // Pad the end of the string.
         value = value.padEnd(
           options.padLengthRight,
           options.padCharRight ?? ' '
         );
-      } else if (options.padType == PadType.Both) {
-        // Pad both sides of the string.
-        if (options.padPriority == PadType.Left) {
-          // Begin with the start of the string.
-          // options.padLengthStart should be less than options.padLengthEnd.
-          value = value.padStart(
-            options.padLengthLeft,
-            options.padCharLeft ?? ' '
-          );
-          value = value.padEnd(
-            options.padLengthRight,
-            options.padCharRight ?? ' '
-          );
-        } else {
-          // Begin with the end of the string.
-          // options.padLengthEnd should be less than options.padLengthStart.
-          value = value.padEnd(
-            options.padLengthRight,
-            options.padCharRight ?? ' '
-          );
-          value = value.padStart(
-            options.padLengthLeft,
-            options.padCharLeft ?? ' '
-          );
-        }
       } else {
-        throw new TypeError('padType object must be of type PadType');
+        // Begin with the end of the string.
+        // options.padLengthEnd should be less than options.padLengthStart.
+        value = value.padEnd(
+          options.padLengthRight,
+          options.padCharRight ?? ' '
+        );
+        value = value.padStart(
+          options.padLengthLeft,
+          options.padCharLeft ?? ' '
+        );
       }
+    } else {
+      throw new TypeError('padType object must be of type PadType');
     }
-
-    return value;
-  } else {
-    throw new TypeError(
-      'options object must be of type GeneratorOptionsString or GeneratorOptionsPaddedString'
-    );
   }
+
+  return value;
 }
-
-export function generateSelect(options: GeneratorOptions): string {
-  // Make sure we have a GeneratorOptionsSelect object.
-  if ('possibles' in options) {
-    const i = rand(options.possibles.length - 1);
-    return options.possibles[i];
-  } else {
-    throw new TypeError(
-      'options object must be of type GeneratorOptionsSelect'
-    );
-  }
-}
-
-// function generateValue(options: GeneratorOptions) {
-
-//       else if (padType == PadType.Both) {
-//         if (padPriority == PadType.Start) {
-//           value = value.padStart(padLengthStart, padCharStart);
-//           value = value.padEnd(padLengthEnd, padCharEnd);
-//         } else if (padPriority == PadType.End) {
-//           value = value.padEnd(padLengthEnd, padCharEnd);
-//           value = value.padStart(padLengthStart, padCharStart);
-//         }
-//       }
-//     }
-//   }
-
-//   return value;
-// }

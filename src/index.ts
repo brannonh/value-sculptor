@@ -1,18 +1,17 @@
-import { GeneratorType, GeneratorOptions } from './types';
+import { GeneratorType, SculptOptions } from './types';
 import { generateNumber, generateString, generateSelect } from './generators';
 
 export default function sculpt(
-  type: GeneratorType,
-  options: GeneratorOptions
+  options: SculptOptions
 ): string | number | undefined {
-  if (type == GeneratorType.Number) {
+  if (options.type == GeneratorType.Number) {
     return generateNumber(options);
-  } else if (type == GeneratorType.String) {
+  } else if (options.type == GeneratorType.String) {
     return generateString(options);
-  } else if (type == GeneratorType.Select) {
+  } else if (options.type == GeneratorType.Select) {
     return generateSelect(options);
   } else {
-    throw new TypeError('type object must be of type GeneratorType');
+    throw new TypeError('options.type must be of type GeneratorType');
   }
 }
 
