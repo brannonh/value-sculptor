@@ -28,8 +28,8 @@ export function generateString(options: OptionsString): string {
     value += charSet[i];
   }
 
-  // Check for a OptionsStringPadded object.
-  if ('padLengthLeft' in options || 'padLengthRight' in options) {
+  // Check for requested padding.
+  if ('padType' in options) {
     if (options.padType == PadType.Left) {
       // Pad the start of the string.
       value = value.padStart(
@@ -67,8 +67,6 @@ export function generateString(options: OptionsString): string {
           options.padCharLeft ?? ' '
         );
       }
-    } else {
-      throw new TypeError('padType object must be of type PadType');
     }
   }
 

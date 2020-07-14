@@ -1,18 +1,29 @@
 import { GeneratorType, SculptOptions } from './types';
 import { generateNumber, generateString, generateSelect } from './generators';
 
+type SculptReturn = string | number | (number | string)[];
+
 export default function sculpt(
-  options: SculptOptions
-): string | number | undefined {
-  if (options.type == GeneratorType.Number) {
-    return generateNumber(options);
-  } else if (options.type == GeneratorType.String) {
-    return generateString(options);
-  } else if (options.type == GeneratorType.Select) {
-    return generateSelect(options);
-  } else {
-    throw new TypeError('options.type must be of type GeneratorType');
+  options: SculptOptions | SculptOptions[],
+  concat: boolean = true
+): SculptReturn {
+  let results: (number | string)[] = [];
+
+  if (!Array.isArray(options)) {
+    options = [ options ];
   }
+
+  for (const segment of options) {
+    if (segment.type == GeneratorType.Number) {
+      results.push(generateNumber(segment));
+    } else if (segment.type == GeneratorType.String) {
+      results.push(generateString(segment));
+    } else if (segment.type == GeneratorType.Select) {
+      results.push(generateSelect(segment));
+    }
+  }
+
+  return concat ? results.join('') : results;
 }
 
 export { GeneratorType };
