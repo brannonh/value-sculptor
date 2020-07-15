@@ -91,7 +91,7 @@ const value = sculpt({ type: GeneratorType.Number, max: 100 });
 const value = sculpt([
   { type: GeneratorType.Number, max: 100 },
   { type: GeneratorType.Number, min: 50, max: 200 }
-], false);
+]);
 
 // value will be a string of numeric characters, left-padded to 15 characters with zeros
 //    example: 000000000012345
