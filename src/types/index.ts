@@ -53,19 +53,28 @@ export const CharacterSets = [
   'CUSTOM'.split(''), // This is just a placeholder for custom character sets.
 ];
 
-interface GeneratorOptionsNumber {
+interface Options<G extends GeneratorType> {
+  type: G;
+}
+
+export interface OptionsNumber extends Options<GeneratorType.Number> {
   min?: number;
   max: number;
 }
 
-interface GeneratorOptionsString<T extends StringType> {
-  length: number;
-  stringType: T;
-  charSet?: string;
+export interface OptionsSelect extends Options<GeneratorType.Select> {
+  possibles: string[];
 }
 
-interface GeneratorOptionsPaddedString<T extends StringType, P extends PadType>
-  extends GeneratorOptionsString<T> {
+interface OptionsStringSimple<S extends StringType>
+  extends Options<GeneratorType.String> {
+  length: number;
+  stringType: S;
+  charSet?: S extends StringType.Custom ? string : never;
+}
+
+interface OptionsStringPadded<S extends StringType, P extends PadType>
+  extends OptionsStringSimple<S> {
   padType: P;
   padPriority: P extends PadType.Both ? PadType.Left | PadType.Right : never;
   padLengthLeft: P extends PadType.Left | PadType.Both ? number : never;
@@ -74,12 +83,8 @@ interface GeneratorOptionsPaddedString<T extends StringType, P extends PadType>
   padCharRight?: P extends PadType.Right | PadType.Both ? string : never;
 }
 
-interface GeneratorOptionsSelect {
-  possibles: string[];
-}
+export type OptionsString =
+  | OptionsStringSimple<StringType>
+  | OptionsStringPadded<StringType, PadType>;
 
-export type GeneratorOptions =
-  | GeneratorOptionsNumber
-  | GeneratorOptionsString<StringType>
-  | GeneratorOptionsPaddedString<StringType, PadType>
-  | GeneratorOptionsSelect;
+export type SculptOptions = OptionsNumber | OptionsSelect | OptionsString;
