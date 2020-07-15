@@ -67,14 +67,14 @@ export interface OptionsSelect extends Options<GeneratorType.Select> {
 }
 
 interface OptionsStringSimple<S extends StringType>
-    extends Options<GeneratorType.String> {
+  extends Options<GeneratorType.String> {
   length: number;
   stringType: S;
   charSet?: S extends StringType.Custom ? string : never;
 }
 
 interface OptionsStringPadded<S extends StringType, P extends PadType>
-    extends OptionsStringSimple<S> {
+  extends OptionsStringSimple<S> {
   padType: P;
   padPriority: P extends PadType.Both ? PadType.Left | PadType.Right : never;
   padLengthLeft: P extends PadType.Left | PadType.Both ? number : never;
@@ -84,10 +84,7 @@ interface OptionsStringPadded<S extends StringType, P extends PadType>
 }
 
 export type OptionsString =
-    OptionsStringSimple<StringType>
+  | OptionsStringSimple<StringType>
   | OptionsStringPadded<StringType, PadType>;
 
-export type SculptOptions =
-    OptionsNumber
-  | OptionsSelect
-  | OptionsString;
+export type SculptOptions = OptionsNumber | OptionsSelect | OptionsString;

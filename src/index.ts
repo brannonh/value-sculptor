@@ -5,12 +5,12 @@ type SculptReturn = string | number | (number | string)[];
 
 export default function sculpt(
   options: SculptOptions | SculptOptions[],
-  concat: boolean = true
+  concat = true
 ): SculptReturn {
-  let results: (number | string)[] = [];
+  const results: (number | string)[] = [];
 
   if (!Array.isArray(options)) {
-    options = [ options ];
+    options = [options];
   }
 
   for (const segment of options) {

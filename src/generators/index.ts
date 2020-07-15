@@ -1,4 +1,10 @@
-import { CharacterSets, OptionsNumber, OptionsSelect, OptionsString, PadType } from '../types';
+import {
+  CharacterSets,
+  OptionsNumber,
+  OptionsSelect,
+  OptionsString,
+  PadType,
+} from '../types';
 
 function rand(max: number, min = 0): number {
   return min + Math.floor(Math.random() * (max - min + 1));
@@ -15,7 +21,7 @@ export function generateSelect(options: OptionsSelect): string {
 
 export function generateString(options: OptionsString): string {
   // Use any passed character set, otherwise use a default set.
-  // A passed character set requires StringType.Custom.
+  // A passed character set overrides options.stringType.
   let charSet = options.charSet?.split('');
   if (!charSet) {
     charSet = CharacterSets[options.stringType];
@@ -32,16 +38,10 @@ export function generateString(options: OptionsString): string {
   if ('padType' in options) {
     if (options.padType == PadType.Left) {
       // Pad the start of the string.
-      value = value.padStart(
-        options.padLengthLeft,
-        options.padCharLeft ?? ' '
-      );
+      value = value.padStart(options.padLengthLeft, options.padCharLeft ?? ' ');
     } else if (options.padType == PadType.Right) {
       // Pad the end of the string.
-      value = value.padEnd(
-        options.padLengthRight,
-        options.padCharRight ?? ' '
-      );
+      value = value.padEnd(options.padLengthRight, options.padCharRight ?? ' ');
     } else if (options.padType == PadType.Both) {
       // Pad both sides of the string.
       if (options.padPriority == PadType.Left) {
