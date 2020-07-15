@@ -5,7 +5,7 @@ type SculptReturn = string | number | (number | string)[];
 
 export default function sculpt(
   options: SculptOptions | SculptOptions[],
-  concat = true
+  concat = false
 ): SculptReturn {
   const results: (number | string)[] = [];
 
@@ -23,7 +23,7 @@ export default function sculpt(
     }
   }
 
-  return concat ? results.join('') : results;
+  return concat ? results.join('') : results.length > 1 ? results : results[0];
 }
 
 export { GeneratorType };
