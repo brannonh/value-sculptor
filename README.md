@@ -6,7 +6,7 @@ It is written in TypeScript and includes type definitions.
 
 ## Status
 
-**Value Sculptor should be considered under development.** All releases prior to 1.0.0 could introduce breaking changes. Every effort will be made to ensure that documentation is accurate for each release.
+**value-sculptor should be considered under development.** All releases prior to 1.0.0 could introduce breaking changes. Every effort will be made to ensure that documentation is accurate for each release.
 
 ## Installation
 
@@ -74,7 +74,7 @@ The following types may make code easier to write and understand.
 Examples are in TypeScript.
 
 ```typescript
-function sculpt(options: SculptOptions | SculptOptions[], concat: boolean = true)
+function sculpt(options: SculptOptions | SculptOptions[], concat: boolean = false)
 ```
 
 Just call the `sculpt` function with your desired options.
@@ -111,7 +111,7 @@ const value = sculpt([
   { type: GeneratorType.String, stringType: StringType.AlphaLower, length: 5 },
   { type: GeneratorType.String, stringType: StringType.Numeric, length: 3 },
   { type: GeneratorType.String, stringType: StringType.AlphaUpper, length: 5 }
-]);
+], true);
 
 // value will be a random string of 10 As and Bs
 //    example: ABAAABABBA
@@ -130,7 +130,7 @@ const value = sculpt({
 The `options` argument is a `SculptOptions` object (or array of `SculpOption` objects) that may contain the following key-value pairs. If `options` is an array, a separate value will be generated for each object in the array.
 
 | Key             | Type            | GeneratorType | Required            | Default | Description                                                                                                         |
-| ---             | ---             | ---           | ---                 | ---     | ---                                                                                                                 |
+| ---             | ---             | ---           | :--:                | ---     | ---                                                                                                                 |
 | charSet         | `string`        | `String`      |                     |         | A string of possible characters, overrides `stringType`                                                             |
 | length          | `integer`       | `String`      | :heavy_check_mark:  |         | The length of the string                                                                                            |
 | max             | `integer`       | `Number`      | :heavy_check_mark:  |         | The maximum value to generate (inclusive)                                                                           |
@@ -147,7 +147,7 @@ The `options` argument is a `SculptOptions` object (or array of `SculpOption` ob
 
 #### concat
 
-The `concat` argument is an optional `boolean` value. If `true` (default), all of the generated values are concatenated together and returned as a single string. If `false`, an array of generated values is returned.
+The `concat` argument is an optional `boolean` value. If `false` (default), an array of generated values is returned. If `false`, all of the generated values are concatenated together and returned as a single string.
 
 ## Contributing
 
