@@ -1,7 +1,5 @@
-import { GeneratorType, SculptOptions } from './types';
+import { GeneratorType, SculptOptions, SculptReturn } from './types';
 import { generateNumber, generateString, generateSelect } from './generators';
-
-type SculptReturn = string | number | (number | string)[];
 
 export default function sculpt(
   options: SculptOptions | SculptOptions[],

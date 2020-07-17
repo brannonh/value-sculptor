@@ -88,3 +88,5 @@ export type OptionsString =
   | OptionsStringPadded<StringType, PadType>;
 
 export type SculptOptions = OptionsNumber | OptionsSelect | OptionsString;
+
+export type SculptReturn = string | number | (number | string)[];
