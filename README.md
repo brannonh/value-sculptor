@@ -97,7 +97,7 @@ const value = sculpt([
 //    example: 000000000012345
 const value = sculpt({
   type: GeneratorType.String,
-  stringType: StringType.AlphaLower,
+  stringType: StringType.Numeric,
   length: 5,
   padType: PadType.Left,
   padLengthLeft: 15,
