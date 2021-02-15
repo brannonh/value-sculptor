@@ -89,4 +89,4 @@ export type OptionsString =
 
 export type SculptOptions = OptionsNumber | OptionsSelect | OptionsString;
 
-export type SculptReturn = string | number | (number | string)[];
+export type SculptReturn = string | number | Record<number, string | number>;
