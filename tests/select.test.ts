@@ -15,4 +15,12 @@ describe('sculpt : select', () => {
     });
     expect(value).toMatch(/^(1|2|3)$/);
   });
+
+  test('should return undefined (invalid GeneratorType) (SO: { possibles })', () => {
+    let value = sculpt({
+      type: 4,
+      possibles: ['one', 'two', 'three'],
+    });
+    expect(value).toBeUndefined();
+  });
 });
