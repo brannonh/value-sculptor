@@ -127,7 +127,7 @@ const value = sculpt({
 
 #### options
 
-The `options` argument is a `SculptOptions` object (or array of `SculpOption` objects) that may contain the following key-value pairs. If `options` is an array, a separate value will be generated for each object in the array.
+The `options` argument is a `SculptOptions` object (or array of `SculptOptions` objects) that may contain the following key-value pairs. If `options` is an array, a separate value will be generated for each object in the array.
 
 | Key             | Type            | GeneratorType | Required            | Default | Description                                                                                                         |
 | ---             | ---             | ---           | :--:                | ---     | ---                                                                                                                 |
@@ -147,7 +147,7 @@ The `options` argument is a `SculptOptions` object (or array of `SculpOption` ob
 
 #### concat
 
-The `concat` argument is an optional `boolean` value. If `false` (default), an array of generated values is returned. If `false`, all of the generated values are concatenated together and returned as a single string.
+The `concat` argument is an optional `boolean` value. If `false` (default), an array of generated values is returned. If `true`, all of the generated values are concatenated together and returned as a single string.
 
 ## Contributing
 

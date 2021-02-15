@@ -37,12 +37,11 @@ Please reference issues and/or pull requests in commit messages, whenever possib
 
 | Emoji | Code | Description |
 | ---   | ---| ---         |
-| :arrow_down: | `:arrow_down:` | Downgraded dependencies. |
-| :arrow_up: | `:arrow_up:` | Upgraded dependencies. |
+| :baby_bottle: | `:baby_bottle:` | Updated dependencies. |
 | :bug: | `:bug:` | Fixed bug.  |
-| :book: | `:book:` | Updated documentation. |
-| :shirt: | `:shirt:` | Fixed linter warnings. |
-| :white_check_mark: | `:white_check_mark:` | Added tests.
+| :books: | `:books:` | Updated documentation / code comments. |
+| :necktie: | `:necktie:` | Fixed linter warnings. |
+| :white_check_mark: | `:white_check_mark:` | Updated tests.
 
 ### Link to Issues
 

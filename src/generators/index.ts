@@ -37,16 +37,16 @@ export function generateString(options: OptionsString): string {
   // Check for requested padding.
   if ('padType' in options) {
     if (options.padType == PadType.Left) {
-      // Pad the start of the string.
+      // Pad the left side of the string.
       value = value.padStart(options.padLengthLeft, options.padCharLeft ?? ' ');
     } else if (options.padType == PadType.Right) {
-      // Pad the end of the string.
+      // Pad the right side of the string.
       value = value.padEnd(options.padLengthRight, options.padCharRight ?? ' ');
     } else if (options.padType == PadType.Both) {
       // Pad both sides of the string.
       if (options.padPriority == PadType.Left) {
-        // Begin with the start of the string.
-        // options.padLengthStart should be less than options.padLengthEnd.
+        // Begin with the left side of the string.
+        // options.padLengthLeft should be less than options.padLengthRight.
         value = value.padStart(
           options.padLengthLeft,
           options.padCharLeft ?? ' '
@@ -56,8 +56,8 @@ export function generateString(options: OptionsString): string {
           options.padCharRight ?? ' '
         );
       } else {
-        // Begin with the end of the string.
-        // options.padLengthEnd should be less than options.padLengthStart.
+        // Begin with the right side of the string.
+        // options.padLengthRigh should be less than options.padLengthLeft.
         value = value.padEnd(
           options.padLengthRight,
           options.padCharRight ?? ' '
