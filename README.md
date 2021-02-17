@@ -16,16 +16,16 @@ npm i value-sculptor
 
 ## Importing
 
-To use, simply import (or require) from `value-sculptor`. You may also want to import (or require) `GeneratorType`, `StringType`, and/or `PadType` to make creating the `options` object easier.
+To use, simply import (or require) from `value-sculptor`. You may also want to import (or require) `GeneratorType`, `CharacterSets`, and/or `PadType` to make creating the `options` object easier.
 
 ```typescript
 import sculpt from 'value-sculptor';
-import { GeneratorType, PadType, StringType } from 'value-sculptor';
+import { GeneratorType, PadType, CharacterSets } from 'value-sculptor';
 ```
 
 ```javascript
 var sculpt = require('value-sculptor').default;
-var { GeneratorType, PadType, StringType } = require('value-sculptor');
+var { GeneratorType, PadType, CharacterSets } = require('value-sculptor');
 ```
 
 ## Types
@@ -40,7 +40,7 @@ The following types may make code easier to write and understand.
 | `Select`  | Choose a random value from a list.          |
 | `String`  | Create a string following a given pattern.  |
 
-### StringType
+### CharacterSets
 
 | Value                      | Possible Characters                                   |
 | ---                        | ---                                                   |
@@ -56,9 +56,12 @@ The following types may make code easier to write and understand.
 | `AlphaUpperNumeric`        | `A-Z`, `0-9`                                          |
 | `AlphaUpperNumericSymbol`  | `A-Z`, `0-9`, `~!@#$%^&*-_=+{[()]}\|:;,<>.?`          |
 | `AlphaUpperSymbol`         | `A-Z`, `~!@#$%^&*-_=+{[()]}\|:;,<>.?`                 |
-| `Custom`                   | developer-defined via `charSet`                       |
+| `Binary`                   | `0-1`                                                 |
+| `HexLower`                 | `0-9`, `a-f`                                          |
+| `HexUpper`                 | `0-9`, `A-F`                                          |
 | `Numeric`                  | `0-9`                                                 |
 | `NumericSymbol`            | `0-9`, `~!@#$%^&*-_=+{[()]}\|:;,<>.?`                 |
+| `Octal`                    | `0-7`                                                 |
 | `Symbol`                   | `~!@#$%^&*-_=+{[()]}\|:;,<>.?`                        |
 
 ### PadType
@@ -97,7 +100,7 @@ const value = sculpt([
 //    example: 000000000012345
 const value = sculpt({
   type: GeneratorType.String,
-  stringType: StringType.Numeric,
+  charSet: CharacterSets.Numeric,
   length: 5,
   padType: PadType.Left,
   padLengthLeft: 15,
@@ -108,16 +111,15 @@ const value = sculpt({
 //    five lowercase characters, three numbers, five uppercase characters
 //    example: abcde123ABCDE
 const value = sculpt([
-  { type: GeneratorType.String, stringType: StringType.AlphaLower, length: 5 },
-  { type: GeneratorType.String, stringType: StringType.Numeric, length: 3 },
-  { type: GeneratorType.String, stringType: StringType.AlphaUpper, length: 5 }
+  { type: GeneratorType.String, charSet: CharacterSets.AlphaLower, length: 5 },
+  { type: GeneratorType.String, charSet: CharacterSets.Numeric, length: 3 },
+  { type: GeneratorType.String, charSet: CharacterSets.AlphaUpper, length: 5 }
 ], true);
 
 // value will be a random string of 10 As and Bs
 //    example: ABAAABABBA
 const value = sculpt({
   type: GeneratorType.String,
-  stringType: StringType.Custom,
   length: 10,
   charSet: 'AB'
 });
@@ -131,7 +133,7 @@ The `options` argument is a `SculptOptions` object (or array of `SculptOptions` 
 
 | Key             | Type            | GeneratorType | Required            | Default | Description                                                                                                         |
 | ---             | ---             | ---           | :--:                | ---     | ---                                                                                                                 |
-| charSet         | `string`        | `String`      |                     |         | A string of possible characters, overrides `stringType`                                                             |
+| charSet         | `string`        | `String`      |                     |         | A string of possible characters                                                                                     |
 | length          | `integer`       | `String`      | :heavy_check_mark:  |         | The length of the string                                                                                            |
 | max             | `integer`       | `Number`      | :heavy_check_mark:  |         | The maximum value to generate (inclusive)                                                                           |
 | min             | `integer`       | `Number`      |                     | `0`     | The minimum value to generate (inclusive)                                                                           |
@@ -142,7 +144,6 @@ The `options` argument is a `SculptOptions` object (or array of `SculptOptions` 
 | padPriority     | `PadType`       | `String`      |                     |         | The side of the string to pad first, **required** if `padType` is `PadType.Both`                                    |
 | padType         | `PadType`       | `String`      |                     |         | The type of padding to use (see [PadType](#PadType)), omit for no padding                                           |
 | possibles       | `string[]`      | `Select`      | :heavy_check_mark:  |         | An array of possible strings from which to choose one                                                               |
-| stringType      | `StringType`    | `String`      | :heavy_check_mark:  |         | The type of string to generate (see [StringType](#StringType))                                                      |
 | type            | `GeneratorType` |               | :heavy_check_mark:  |         | The type of value to create (see [GeneratorType](#GeneratorType))                                                   |
 
 #### concat

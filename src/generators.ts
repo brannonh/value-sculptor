@@ -1,10 +1,5 @@
-import {
-  CharacterSets,
-  OptionsNumber,
-  OptionsSelect,
-  OptionsString,
-  PadType,
-} from './types';
+import { OptionsNumber, OptionsSelect, OptionsString, PadType } from './types';
+import { Alpha } from './characters';
 
 function rand(max: number, min = 0): number {
   return min + Math.floor(Math.random() * (max - min + 1));
@@ -20,12 +15,7 @@ export function generateSelect(options: OptionsSelect): string {
 }
 
 export function generateString(options: OptionsString): string {
-  // Use any passed character set, otherwise use a default set.
-  // A passed character set overrides options.stringType.
-  let charSet = options.charSet?.split('');
-  if (!charSet) {
-    charSet = CharacterSets[options.stringType];
-  }
+  const charSet = options.charSet?.split('') ?? Alpha.split('');
 
   // Generate value.
   let value = '';

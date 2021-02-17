@@ -1,5 +1,6 @@
 import { GeneratorType, SculptOptions, SculptReturn } from './types';
 import { generateNumber, generateString, generateSelect } from './generators';
+import CharacterSets from './characters';
 
 export default function sculpt(
   options: SculptOptions | SculptOptions[],
@@ -24,5 +25,5 @@ export default function sculpt(
   return concat ? results.join('') : results.length > 1 ? results : results[0];
 }
 
-export { GeneratorType };
-export { StringType, PadType } from './types';
+export { GeneratorType, CharacterSets };
+export { PadType } from './types';
