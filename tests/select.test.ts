@@ -17,7 +17,7 @@ describe('sculpt : select', () => {
   });
 
   test('should return undefined (invalid GeneratorType) (SO: { possibles })', () => {
-    let value = sculpt({
+    const value = sculpt({
       type: 4,
       possibles: ['one', 'two', 'three'],
     });

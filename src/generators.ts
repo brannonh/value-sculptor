@@ -4,7 +4,7 @@ import {
   OptionsSelect,
   OptionsString,
   PadType,
-} from '../types';
+} from './types';
 
 function rand(max: number, min = 0): number {
   return min + Math.floor(Math.random() * (max - min + 1));

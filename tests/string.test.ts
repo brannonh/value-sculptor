@@ -229,7 +229,7 @@ describe('sculpt : string', () => {
   });
 
   test('should generate unpadded string (invalid padType) (SO: { length, stringType, padType, padPriority, padLengthLeft, padLengthRight })', () => {
-    let value = sculpt({
+    const value = sculpt({
       type: GeneratorType.String,
       length: 10,
       stringType: StringType.AlphaNumeric,
@@ -350,13 +350,21 @@ describe('sculpt : string', () => {
   });
 
   test('should generate string of two numbers between 0 and max (SO: { max })', () => {
-    const value = sculpt([
-      { type: GeneratorType.Number, max: 100 },
-      { type: GeneratorType.String, stringType: StringType.Custom, charSet: '.', length: 1 },
-      { type: GeneratorType.Number, max: 200 }
-    ], true);
+    const value = sculpt(
+      [
+        { type: GeneratorType.Number, max: 100 },
+        {
+          type: GeneratorType.String,
+          stringType: StringType.Custom,
+          charSet: '.',
+          length: 1,
+        },
+        { type: GeneratorType.Number, max: 200 },
+      ],
+      true
+    );
 
-    const [ first, second ] = (value as string).split('.')
+    const [first, second] = (value as string).split('.');
     expect(parseInt(first)).toBeGreaterThanOrEqual(0);
     expect(parseInt(first)).toBeLessThanOrEqual(100);
     expect(parseInt(second)).toBeGreaterThanOrEqual(0);

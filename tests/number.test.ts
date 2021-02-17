@@ -1,5 +1,5 @@
 import sculpt from '../src';
-import { GeneratorType, StringType } from '../src/types';
+import { GeneratorType } from '../src/types';
 
 describe('sculpt : number', () => {
   test('should generate number between 0 and max (SO: { max })', () => {
@@ -23,9 +23,12 @@ describe('sculpt : number', () => {
   });
 
   test('should generate array of two numbers between 0 and max (SO: { max })', () => {
-    let value = sculpt([{ type: GeneratorType.Number, max: 100 }, { type: GeneratorType.Number, max: 200 }]);
+    let value = sculpt([
+      { type: GeneratorType.Number, max: 100 },
+      { type: GeneratorType.Number, max: 200 },
+    ]);
     expect(value).toHaveLength(2);
-    value = (value as Record<number, string | number>);
+    value = value as Record<number, string | number>;
     expect(value[0]).toBeGreaterThanOrEqual(0);
     expect(value[0]).toBeLessThanOrEqual(100);
     expect(value[1]).toBeGreaterThanOrEqual(0);
