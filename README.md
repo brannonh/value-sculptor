@@ -77,7 +77,7 @@ The following types may make code easier to write and understand.
 Examples are in TypeScript.
 
 ```typescript
-function sculpt(options: SculptOptions | SculptOptions[], concat: boolean = false)
+function sculpt(options: SculptOptions | SculptOptions[], concat: boolean = false, delimiter: string = '')
 ```
 
 Just call the `sculpt` function with your desired options.
@@ -116,6 +116,15 @@ const value = sculpt([
   { type: GeneratorType.String, charSet: CharacterSets.AlphaUpper, length: 5 }
 ], true);
 
+// value will be three strings of random characters in the following pattern, delimited by periods:
+//    five lowercase characters, three numbers, five uppercase characters
+//    example: abcde.123.ABCDE
+const value = sculpt([
+  { type: GeneratorType.String, charSet: CharacterSets.AlphaLower, length: 5 },
+  { type: GeneratorType.String, charSet: CharacterSets.Numeric, length: 3 },
+  { type: GeneratorType.String, charSet: CharacterSets.AlphaUpper, length: 5 }
+], true, '.');
+
 // value will be a random string of 10 As and Bs
 //    example: ABAAABABBA
 const value = sculpt({
@@ -149,6 +158,10 @@ The `options` argument is a `SculptOptions` object (or array of `SculptOptions` 
 #### concat
 
 The `concat` argument is an optional `boolean` value. If `false` (default), an array of generated values is returned. If `true`, all of the generated values are concatenated together and returned as a single string.
+
+#### delimiter
+
+The `delimiter` argument is an optional `string` value. It defaults to an empty string (`''`) and will be used to separate values when `concat` is `true`.
 
 ## Contributing
 

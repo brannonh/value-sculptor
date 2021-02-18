@@ -4,7 +4,7 @@ describe('sculpt : string', () => {
   // Test all string types (except custom) in this test. Subsequent tests should
   // cycle through the available string types, using one per test.
   test('should generate default string (SO: { length })', () => {
-    let value = sculpt({
+    const value = sculpt({
       type: GeneratorType.String,
       length: 10,
     });
@@ -347,7 +347,7 @@ describe('sculpt : string', () => {
     expect(value).toMatch(/[o]{10}[ABC123xyz7899]{10}/);
   });
 
-  test('should generate string of two numbers between 0 and max (SO: { max })', () => {
+  test('should generate string of two numbers between 0 and max (SO: { max, charSet })', () => {
     const value = sculpt(
       [
         { type: GeneratorType.Number, max: 100 },
@@ -366,5 +366,16 @@ describe('sculpt : string', () => {
     expect(parseInt(first)).toBeLessThanOrEqual(100);
     expect(parseInt(second)).toBeGreaterThanOrEqual(0);
     expect(parseInt(second)).toBeLessThanOrEqual(200);
+  });
+
+  test('should generate concatenated string (SO: { charSet })', () => {
+    const value = sculpt(
+      [
+        { type: GeneratorType.String, charSet: CharacterSets.AlphaLower, length: 5 },
+        { type: GeneratorType.String, charSet: CharacterSets.Numeric, length: 5 },
+      ],
+      true, '.'
+    );
+    expect(value).toMatch(/[a-z]{5}\.[0-9]{5}/);
   });
 });

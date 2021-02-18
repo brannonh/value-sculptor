@@ -4,7 +4,8 @@ import CharacterSets from './characters';
 
 export default function sculpt(
   options: SculptOptions | SculptOptions[],
-  concat = false
+  concat = false,
+  delimiter = ''
 ): SculptReturn {
   const results: (number | string)[] = [];
 
@@ -22,7 +23,11 @@ export default function sculpt(
     }
   }
 
-  return concat ? results.join('') : results.length > 1 ? results : results[0];
+  return concat
+    ? results.join(delimiter)
+    : results.length > 1
+    ? results
+    : results[0];
 }
 
 export { GeneratorType, CharacterSets };
