@@ -371,10 +371,19 @@ describe('sculpt : string', () => {
   test('should generate concatenated string (SO: { charSet })', () => {
     const value = sculpt(
       [
-        { type: GeneratorType.String, charSet: CharacterSets.AlphaLower, length: 5 },
-        { type: GeneratorType.String, charSet: CharacterSets.Numeric, length: 5 },
+        {
+          type: GeneratorType.String,
+          charSet: CharacterSets.AlphaLower,
+          length: 5,
+        },
+        {
+          type: GeneratorType.String,
+          charSet: CharacterSets.Numeric,
+          length: 5,
+        },
       ],
-      true, '.'
+      true,
+      '.'
     );
     expect(value).toMatch(/[a-z]{5}\.[0-9]{5}/);
   });
