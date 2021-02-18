@@ -14,11 +14,11 @@
     "test:qw": "npx jest --watch",
     "lint": "npx eslint . --ext .ts,.tsx",
     "lint:fix": "npx eslint . --ext .ts,.tsx --fix",
-    "prepare": "npm run build",
-    "prePublishOnly": "npm run lint:fix && npm run test",
     "preversion": "npm run lint:fix",
-    "version": "npm run lint:fix && git add -A",
-    "postversion": "git push && git push --tags"
+    "version": "git add -A",
+    "postversion": "git push && git push --tags",
+    "prePublishOnly": "npm run lint:fix && npm run test",
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
