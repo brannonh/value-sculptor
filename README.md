@@ -6,7 +6,9 @@ It is written in TypeScript and includes type definitions.
 
 ## Status
 
-**value-sculptor should be considered under development.** All releases prior to 1.0.0 could introduce breaking changes. Every effort will be made to ensure that documentation is accurate for each release.
+[![Node.js CI](https://github.com/brannonh/value-sculptor/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/brannonh/value-sculptor/actions/workflows/node.js.yml)
+
+**value-sculptor should be considered under development.** All minor versions prior to 1.0.0 introduce breaking changes. Every effort will be made to ensure that documentation is accurate for each release.
 
 ## Installation
 
