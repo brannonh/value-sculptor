@@ -2,7 +2,7 @@ import { GeneratorType, SculptOptions, SculptReturn } from './types';
 import { generateNumber, generateString, generateSelect } from './generators';
 import CharacterSets from './characters';
 
-export default function sculpt(
+export function sculpt(
   options: SculptOptions | SculptOptions[],
   concat = false,
   delimiter = ''

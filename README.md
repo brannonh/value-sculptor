@@ -21,13 +21,11 @@ npm i value-sculptor
 To use, simply import (or require) from `value-sculptor`. You may also want to import (or require) `GeneratorType`, `CharacterSets`, and/or `PadType` to make creating the `options` object easier.
 
 ```typescript
-import sculpt from 'value-sculptor';
-import { GeneratorType, PadType, CharacterSets } from 'value-sculptor';
+import { sculpt, GeneratorType, PadType, CharacterSets } from 'value-sculptor';
 ```
 
 ```javascript
-var sculpt = require('value-sculptor').default;
-var { GeneratorType, PadType, CharacterSets } = require('value-sculptor');
+var { sculpt, GeneratorType, PadType, CharacterSets } = require('value-sculptor');
 ```
 
 ## Types

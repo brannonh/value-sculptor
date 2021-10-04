@@ -1,4 +1,4 @@
-import sculpt, { GeneratorType, CharacterSets, PadType } from '../src';
+import { sculpt, GeneratorType, CharacterSets, PadType } from '../src';
 
 describe('sculpt : string', () => {
   // Test all string types (except custom) in this test. Subsequent tests should

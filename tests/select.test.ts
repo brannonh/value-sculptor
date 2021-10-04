@@ -1,4 +1,4 @@
-import sculpt from '../src';
+import { sculpt } from '../src';
 import { GeneratorType } from '../src/types';
 
 describe('sculpt : select', () => {
